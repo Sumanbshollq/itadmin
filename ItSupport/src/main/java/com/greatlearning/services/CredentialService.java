@@ -15,14 +15,17 @@ public class CredentialService {
         return emailId;
     }
 
-    public String generatePassword() {
+    public char[] generatePassword() {
         String capitalLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String smallLetter = "avcdefghijklmnopqrstuvwxyz";
+        String specialChars = "!!@#$%^&*()_+{}:<>";
+        String numbers = "1234567890";
+        String pwd = capitalLetter + smallLetter + numbers + specialChars;
         Random random = new Random();
-        String password = "";
+        char[] password = new char[8];
         for (int i = 0; i < 8; i++) {
-            password = password + capitalLetter.charAt(random.nextInt(26));
+            password[i] = pwd.charAt(random.nextInt(pwd.length()));
         }
-        this.password = password;
         return password;
     }
 

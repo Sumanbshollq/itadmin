@@ -23,31 +23,29 @@ public class DriverClass {
 
         System.out.print("Select the department (1 to 4) : ");
         int departmentId = scanner.nextInt();
-
         String emailId = null;
-        String password = null;
+        String password = String.valueOf(credentialService.generatePassword());
 
         switch (departmentId) {
             case 1:
-                emailId = credentialService.generateEmailId(employee, "Technical");
-                password = credentialService.generatePassword();
+                emailId = credentialService.generateEmailId(employee, "tech");
                 break;
             case 2:
-                emailId = credentialService.generateEmailId(employee, "Technical");
-                password = credentialService.generatePassword();
+                emailId = credentialService.generateEmailId(employee, "admin");
                 break;
             case 3:
-                emailId = credentialService.generateEmailId(employee, "Technical");
-                password = credentialService.generatePassword();
+                emailId = credentialService.generateEmailId(employee, "hr");
                 break;
             case 4:
-                emailId = credentialService.generateEmailId(employee, "Technical");
-                password = credentialService.generatePassword();
+                emailId = credentialService.generateEmailId(employee, "legal");
                 break;
             default:
-                System.out.println("Wrong department");
+                System.out.println("Entered Wrong department");
         }
-        System.out.println(" Your Email id - " + emailId);
-        System.out.println(" Your password is - " + password);
+        if (departmentId >= 1 && departmentId <= 4) {
+            System.out.println(" Your Email id - " + emailId);
+            System.out.println(" Your password is - " + password);
+        }
+
     }
 }
